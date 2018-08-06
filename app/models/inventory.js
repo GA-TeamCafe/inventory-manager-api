@@ -1,12 +1,12 @@
 const mongoose = require('mongoose')
 
-const exampleSchema = new mongoose.Schema({
-  title: {
-    type: String,
+const inventorySchema = new mongoose.Schema({
+  onhand: {
+    type: Number,
     required: true
   },
-  text: {
-    type: String,
+  needed: {
+    type: Number,
     required: true
   },
   owner: {
@@ -18,4 +18,4 @@ const exampleSchema = new mongoose.Schema({
   timestamps: true
 })
 
-module.exports = mongoose.model('Example', exampleSchema)
+module.exports = mongoose.model('Inventory', inventorySchema)
