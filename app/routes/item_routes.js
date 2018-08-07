@@ -1,7 +1,7 @@
 // Express docs: http://expressjs.com/en/api.html
 const express = require('express')
 // Passport docs: http://www.passportjs.org/docs/
-const passport = require('passport')
+// const passport = require('passport')
 
 // pull in Mongoose model for items
 const Item = require('../models/item')
@@ -23,7 +23,6 @@ const handle404 = customErrors.handle404
 // passing this as a second argument to `router.<verb>` will make it
 // so that a token MUST be passed for that route to be available
 // it will also set `res.user`
-const requireToken = passport.authenticate('bearer', { session: false })
 
 // instantiate a router (mini app that only handles routes)
 const router = express.Router()
@@ -46,7 +45,7 @@ router.get('/items', (req, res) => {
 
 // SHOW
 // GET /items/5a7db6c74d55bc51bdf39793
-router.get('/items/:id', requireToken, (req, res) => {
+router.get('/items/:id', (req, res) => {
   // req.params.id will be set based on the `:id` in the route
   Item.findById(req.params.id)
     .then(handle404)
