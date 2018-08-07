@@ -31,7 +31,7 @@ const router = express.Router()
 // INDEX
 // GET /inventories
 router.get('/inventories', requireToken, (req, res) => {
-  Inventory.find()
+  Inventory.find().populate('itemReference')
     .then(inventories => {
       // `inventories` will be an array of Mongoose documents
       // we want to convert each one to a POJO, so we use `.map` to
