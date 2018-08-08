@@ -31,16 +31,17 @@ const router = express.Router()
 // INDEX
 // GET /inventories
 router.get('/inventories', requireToken, (req, res) => {
-  Inventory.find().populate('itemReference')
+  Inventory.find({'owner': req.user._id}).populate('itemReference')
     .then(inventories => {
-      requireOwnership(req, inventories)
       // `inventories` will be an array of Mongoose documents
       // we want to convert each one to a POJO, so we use `.map` to
       // apply `.toObject` to each one
       return inventories.map(inventory => inventory.toObject())
     })
     // respond with status 200 and JSON of the examples
-    .then(inventories => res.status(200).json({ inventories: inventories }))
+    .then(inventories =>
+      // requireOwnership(req, inventories)
+      res.status(200).json({ inventories: inventories }))
     // if an error occurs, pass it to the handler
     .catch(err => handle(err, res))
 })
@@ -53,8 +54,8 @@ router.get('/inventories/:id', requireToken, (req, res) => {
     .then(handle404)
     // if `findById` is succesful, respond with 200 and "example" JSON
     .then(inventory => {
-      requireOwnership(req, inventory)
-      res.status(200).json({ inventory: inventory.toObject() }) 
+      // requireOwnership(req, inventory)
+      res.status(200).json({ inventory: inventory.toObject() })
     })
     // if an error occurs, pass it to the handler
     .catch(err => handle(err, res))
