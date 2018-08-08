@@ -54,7 +54,7 @@ router.get('/inventories/:id', requireToken, (req, res) => {
     .then(handle404)
     // if `findById` is succesful, respond with 200 and "example" JSON
     .then(inventory => {
-      // requireOwnership(req, inventory)
+      requireOwnership(req, inventory)
       res.status(200).json({ inventory: inventory.toObject() })
     })
     // if an error occurs, pass it to the handler
