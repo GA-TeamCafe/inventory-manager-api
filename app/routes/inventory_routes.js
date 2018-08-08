@@ -48,7 +48,7 @@ router.get('/inventories', requireToken, (req, res) => {
 // GET /inventories/5a7db6c74d55bc51bdf39793
 router.get('/inventories/:id', requireToken, (req, res) => {
   // req.params.id will be set based on the `:id` in the route
-  Inventory.findById(req.params.id)
+  Inventory.findById(req.params.id).populate('itemReference')
     .then(handle404)
     // if `findById` is succesful, respond with 200 and "example" JSON
     .then(inventory => res.status(200).json({ inventory: inventory.toObject() }))
