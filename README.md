@@ -37,13 +37,17 @@ The app is secure in that it only allows signed in users to view the manufacture
 - HTML5
 - SCSS
 - Bootstrap
-- Agile: Scrum 
+- Agile: Scrum
 
 
 
 ###### Process
 
-The team engaged in a planning process that included [wireframing](![ims-wireframe](https://media.git.generalassemb.ly/user/11650/files/c1b11dc8-9bda-11e8-934d-e97a4a3c5865)), [user stories and ERDs](![userstories](https://media.git.generalassemb.ly/user/11650/files/ef21e7a6-9bda-11e8-8b9e-9bf08a40f89e)). We  agreed to have Aleks be the Scrum Master and to use Trello and Jira as Project Management Tools and to use Slack as a communication tool. For version control we used Git and Github and created a `dev` branch into which all our feature branches were merged. Accepting pull requests and doing merges were never done by the same team member who initiated the pull request. This process kept Git conflicts to a minimum.
+The team engaged in a planning process that included wireframing:
+![ims-wireframe](https://media.git.generalassemb.ly/user/11649/files/8d30412e-9bde-11e8-8b77-c3f1b8f359c7)
+user stories and ERDs:
+![img_4519](https://media.git.generalassemb.ly/user/11649/files/8e1ae4ae-9bde-11e8-95e5-9d2124bcfa9f)
+We  agreed to have Aleks be the Scrum Master and to use Trello and Jira as Project Management Tools and to use Slack as a communication tool. For version control we used Git and Github and created a `dev` branch into which all our feature branches were merged. Accepting pull requests and doing merges were never done by the same team member who initiated the pull request. This process kept Git conflicts to a minimum.
 
 Our schedule was guided by the suggestions made in the schedule.md file shared by the General Assembly instructors. It included  a day of planning and of setting up the API and client repos, both locally and on Github. We also created and deployed the Heroku app.
 
@@ -55,4 +59,3 @@ Troubleshooting and debugging was done with console.log statements, reading and 
 
 - Ability to use Passport or another package to strengthen our user authentication so only people with certain e-mails are allowed to register as users.
 - Ability to attach a barcode to our items.
-
