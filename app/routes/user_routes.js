@@ -18,6 +18,7 @@ const User = require('../models/user')
 // so that a token MUST be passed for that route to be available
 // it will also set `res.user`
 const requireToken = passport.authenticate('bearer', { session: false })
+// const restrictDomain = passport.authenticate('local', { hostedDomain: config.get('team-ga.com')})
 
 // instantiate a router (mini app that only handles routes)
 const router = express.Router()
@@ -30,9 +31,13 @@ router.post('/sign-up', (req, res) => {
     // reject any requests where `credentials.password` is not present, or where
     // the password is an empty string
     .then(credentials => {
+      console.log(credentials)
+      console.log(credentials.email.split('@')[1])
+      // https://github.com/jaredhanson/passport-google-oauth2/issues/3
       if (!credentials ||
           !credentials.password ||
-          credentials.password !== credentials.password_confirmation) {
+          credentials.password !== credentials.password_confirmation ||
+          credentials.email.split('@')[1] !== 'team-ga.com') {
         throw new BadParamsError()
       }
     })
